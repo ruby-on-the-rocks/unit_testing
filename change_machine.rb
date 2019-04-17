@@ -2,28 +2,14 @@ require "rspec"
 
 class ChangeMachine
   def change_spitter(value)
+    denominations = [25, 10, 5, 1]
     coin_array = []
-
-    num_quarters = value / 25
-    num_quarters.times do
-      coin_array << 25
-      value -= 25
-    end
-
-    num_dimes = value / 10
-    num_dimes.times do
-      coin_array << 10
-      value -= 10
-    end
-
-    num_nickels = value / 5
-    num_nickels.times do
-      coin_array << 5
-      value -= 5
-    end
-
-    value.times do
-      coin_array << 1
+    denominations.each do |denomination|
+      num_coins = value / denomination
+      num_coins.times do
+        coin_array << denomination
+        value -= denomination
+      end
     end
     coin_array
   end
